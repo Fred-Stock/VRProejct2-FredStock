@@ -29,7 +29,7 @@ Transform:
   m_Children:
   - {fileID: 5944272869618253099}
   m_Father: {fileID: 58954808148450966}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2970112125987572888
 GameObject:
@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4810789523019133599}
   - component: {fileID: 1384888052055998123}
   - component: {fileID: 5405648568724015323}
+  - component: {fileID: 1494277206929934586}
   m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
@@ -61,6 +62,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.409, z: -0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4101078037083241453}
   - {fileID: 3334965998130967419}
   - {fileID: 3334965997094186447}
   - {fileID: 3334965997732313789}
@@ -206,7 +208,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curBolt: {fileID: 0}
-  crossbowString: {fileID: 3334965998130967423}
+  crossbow: {fileID: 2970112125987572888}
+--- !u!114 &1494277206929934586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2970112125987572888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e2a86498dc9fc4b989be02f071b4e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boltPrefab: {fileID: 2642006156731267724, guid: 2ab5413d21ef57444b883ad4d7316e01, type: 3}
+  crossbowBase: {fileID: 3334965997094186435}
+  bowString: {fileID: 3334965998130967423}
+  crossbowTrigger: {fileID: 5405648568724015323}
+  boltSpawnLocation: {fileID: 4101078037083241453}
+  stringForce: 100
+  loaded: 0
 --- !u!1 &3334965997094186435
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +260,7 @@ Transform:
   m_LocalScale: {x: 0.24999996, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 58954808148450966}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3334965997094186446
 MeshFilter:
@@ -380,7 +401,7 @@ Transform:
   m_LocalScale: {x: 0.30000007, y: 0.056, z: 0.050000016}
   m_Children: []
   m_Father: {fileID: 58954808148450966}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
 --- !u!33 &3334965997732313784
 MeshFilter:
@@ -461,7 +482,7 @@ Transform:
   m_LocalScale: {x: 0.3, y: 0.056, z: 0.049999993}
   m_Children: []
   m_Father: {fileID: 58954808148450966}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -20, z: 0}
 --- !u!33 &3334965997845729785
 MeshFilter:
@@ -525,7 +546,6 @@ GameObject:
   - component: {fileID: 3334965998130967421}
   - component: {fileID: 3334965998130967420}
   - component: {fileID: 3334965998130967366}
-  - component: {fileID: 3334965998130967416}
   - component: {fileID: 3372720066375817052}
   m_Layer: 10
   m_Name: String
@@ -546,7 +566,7 @@ Transform:
   m_LocalScale: {x: 0.03, y: 0.5999999, z: 0.03}
   m_Children: []
   m_Father: {fileID: 58954808148450966}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &3334965998130967418
 MeshFilter:
@@ -627,23 +647,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &3334965998130967416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3334965998130967423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494c17bc691e5c8429f10cc77a44a2b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boltPrefab: {fileID: 2642006156731267724, guid: 2ab5413d21ef57444b883ad4d7316e01, type: 3}
-  ballistaBase: {fileID: 2970112125987572888}
-  ballistaTrigger: {fileID: 2970112125987572888}
-  stringForce: 200
-  loaded: 0
 --- !u!114 &3372720066375817052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,7 +746,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.056, z: 0.05}
   m_Children: []
   m_Father: {fileID: 58954808148450966}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3334965998351422463
 MeshFilter:
@@ -889,3 +892,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0.000000059604645}
+--- !u!1 &9164989550199066445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4101078037083241453}
+  m_Layer: 0
+  m_Name: BoltSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4101078037083241453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9164989550199066445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.133, z: 0.295}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 58954808148450966}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

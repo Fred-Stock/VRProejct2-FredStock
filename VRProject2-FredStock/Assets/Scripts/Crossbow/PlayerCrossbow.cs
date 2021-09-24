@@ -7,14 +7,14 @@ public class PlayerCrossbow : Crossbow
 {
     public void OnEnable()
     {
-        gameObject.GetComponent<XRSimpleInteractable>().selectEntered.AddListener(OnPlayerGrabEvent);
-        gameObject.GetComponent<XRSimpleInteractable>().selectExited.AddListener(OnPlayerLetGoEvent);
+        gameObject.GetComponentInChildren<XRSimpleInteractable>().selectEntered.AddListener(OnPlayerGrabEvent);
+        gameObject.GetComponentInChildren<XRSimpleInteractable>().selectExited.AddListener(OnPlayerLetGoEvent);
     }
 
     public void OnDisable()
     {
-        gameObject.GetComponent<XRSimpleInteractable>().selectEntered.RemoveListener(OnPlayerGrabEvent);
-        gameObject.GetComponent<XRSimpleInteractable>().selectExited.RemoveListener(OnPlayerLetGoEvent);
+        gameObject.GetComponentInChildren<XRSimpleInteractable>().selectEntered.RemoveListener(OnPlayerGrabEvent);
+        gameObject.GetComponentInChildren<XRSimpleInteractable>().selectExited.RemoveListener(OnPlayerLetGoEvent);
     }
 
     /// <summary>

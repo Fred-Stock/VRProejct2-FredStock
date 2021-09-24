@@ -14,7 +14,7 @@ public class Bolt : MonoBehaviour
     {
         // if the bolt is in the air without colliding for long enough delete it
         // removes clutter in the scene and remove unneeded computations
-        if(!inAir) { return; }
+        if(!inAir) { return;  }
         timeAlive += Time.deltaTime;
 
         if(timeAlive > lifeTime)
@@ -26,13 +26,17 @@ public class Bolt : MonoBehaviour
     private void OnEnable()
     {
         inAir = false;
-        GameObject.Find("GameManager").GetComponent<GameData>().PushBolt(gameObject);
+        //GameObject.Find("GameManager").GetComponent<GameData>().PushBolt(gameObject);
     }
 
     public void Delete()
     {
-        GameObject.Find("GameManager").GetComponent<GameData>().PopBolt();
+        //GameObject.Find("GameManager").GetComponent<GameData>().PopBolt();
         Destroy(gameObject);
     }
 
+    public void SetShootForce(float shootForce)
+    {
+        this.shootForce = shootForce;
+    }
 }

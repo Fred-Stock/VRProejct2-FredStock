@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 58954808148450966}
   - component: {fileID: 4810789523019133599}
   - component: {fileID: 1384888052055998123}
-  - component: {fileID: 1230593989511327131}
   - component: {fileID: 5405648568724015323}
+  - component: {fileID: 5613081960985071823}
   m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
@@ -195,25 +195,6 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!114 &1230593989511327131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2970112125987572888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ec89bdc0736cf43b82cd661bfa71f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boltPrefab: {fileID: 2642006156731267724, guid: 2ab5413d21ef57444b883ad4d7316e01, type: 3}
-  crossbowBase: {fileID: 3334965998130967423}
-  bowString: {fileID: 3334965998130967423}
-  crossbowTrigger: {fileID: 5405648568724015323}
-  boltSpawnLocation: {fileID: 4101078037083241453}
-  stringForce: 100
-  loaded: 0
 --- !u!114 &5405648568724015323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +209,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curBolt: {fileID: 0}
   crossbow: {fileID: 2970112125987572888}
+--- !u!114 &5613081960985071823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2970112125987572888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ec89bdc0736cf43b82cd661bfa71f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boltPrefab: {fileID: 2642006156731267724, guid: 2ab5413d21ef57444b883ad4d7316e01, type: 3}
+  crossbowBase: {fileID: 3334965997094186435}
+  bowString: {fileID: 3334965998130967423}
+  crossbowTrigger: {fileID: 5405648568724015323}
+  boltSpawnLocation: {fileID: 4101078037083241453}
+  stringForce: 100
+  loaded: 0
 --- !u!1 &3334965997094186435
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3334965997140866679}
   m_Layer: 0
-  m_Name: Crossbow
+  m_Name: TestCrossbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 8511448355888051127}
   - component: {fileID: 31824524315220540}
   - component: {fileID: 6092630971604572617}
-  - component: {fileID: 4219825795578727878}
+  - component: {fileID: 3032927271396309299}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -893,7 +893,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0.000000059604645}
---- !u!54 &4219825795578727878
+--- !u!54 &3032927271396309299
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

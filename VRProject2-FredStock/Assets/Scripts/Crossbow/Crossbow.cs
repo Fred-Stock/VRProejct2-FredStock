@@ -8,26 +8,49 @@ public class Crossbow : MonoBehaviour
     public GameObject boltPrefab;
 
     public GameObject crossbowBase;
-    public GameObject crossbowTrigger;
+    public GameObject bowString;
+    public Trigger crossbowTrigger;
     protected GameObject curBolt;
+    public Transform boltSpawnLocation;
 
     [SerializeField] protected float stringForce;
     public bool loaded = false;
 
     public void LoadCrossbow()
     {
+        if(loaded) { return; } //make sure the crossbow is not already loaded
+
         //Turns the crossbow string invisible
-        GetComponent<MeshRenderer>().enabled = false;
+        bowString.GetComponent<MeshRenderer>().enabled = false;
 
         //Creates a bolt and initializes it so it sticks to the base of the crossbow
-        curBolt = Instantiate(boltPrefab, transform.position + -.25f * transform.forward, transform.rotation);
-        crossbowTrigger.GetComponent<Trigger>().curBolt = curBolt;
+        curBolt = Instantiate(boltPrefab, boltSpawnLocation.position, transform.rotation);
+        curBolt.GetComponent<Bolt>().SetShootForce(stringForce);
+        crossbowTrigger.curBolt = curBolt;
         curBolt.GetComponent<Rigidbody>().useGravity = false;
         curBolt.transform.SetParent(crossbowBase.transform);
 
         loaded = true;
     }
 
-    
+    /// <summary>
+    /// Launches the loaded bolt and makes the crossbow string visible again
+    /// </summary>
+    public void Shoot()
+    {
+        if (!loaded) { return; } //make sure crossbow is actually loaded before trying to fire
+
+        // launches bolt and assigns parameters needed for flight 
+        curBolt.GetComponent<Rigidbody>().AddForce(curBolt.GetComponent<Bolt>().shootForce * curBolt.transform.forward, ForceMode.Force);
+        curBolt.GetComponent<Rigidbody>().useGravity = true;
+        curBolt.GetComponent<Bolt>().inAir = true;
+        curBolt.transform.SetParent(null);
+
+        // Makes the crossbow string visible
+        bowString.GetComponent<MeshRenderer>().enabled = true;
+
+        gameObject.GetComponent<Crossbow>().loaded = false;
+    }
+
 
 }

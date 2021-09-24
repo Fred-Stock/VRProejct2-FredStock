@@ -6,39 +6,34 @@ public class Trigger : MonoBehaviour
 {
 
     public GameObject curBolt;
-    public GameObject crossbowString;
+    public GameObject crossbow;
     private XRGrabInteractable triggerInteractable;
 
     public void OnEnable()
     {
-        triggerInteractable = GetComponent<XRGrabInteractable>();
-        triggerInteractable.activated.AddListener(OnShoot);
+        if(gameObject.GetComponentInParent<PlayerCrossbow>() != null)
+        {
+            triggerInteractable = GetComponent<XRGrabInteractable>();
+            triggerInteractable.activated.AddListener(OnShoot);
+        }
+
     }
 
     public void OnDisable()
     {
-        triggerInteractable.activated.RemoveListener(OnShoot);
+        if (gameObject.GetComponentInParent<PlayerCrossbow>() != null)
+        {
+            triggerInteractable.activated.RemoveListener(OnShoot);
+
+        }
     }
 
     /// <summary>
     /// Method which is called when the player presses the trigger while holding crossbow
-    /// Launches the loaded bolt and makes the crossbow string visible again
+    /// calls Shoot()
     /// </summary>
     /// <param name="arg0"></param>
-    private void OnShoot(ActivateEventArgs arg0)
-    {
-        if (!crossbowString.GetComponent<CrossbowString>().loaded) { return; } //makes sure crossbow is actually loaded before trying to fire
+    private void OnShoot(ActivateEventArgs arg0) { crossbow.GetComponent<Crossbow>().Shoot(); }
 
-        // launches bolt and assigns parameters needed for flight 
-        curBolt.GetComponent<Rigidbody>().AddForce(curBolt.GetComponent<Bolt>().shootForce * curBolt.transform.forward, ForceMode.Force);
-        curBolt.GetComponent<Rigidbody>().useGravity = true;
-        curBolt.GetComponent<Bolt>().inAir = true;
-        curBolt.transform.SetParent(curBolt.transform);
 
-        // Makes the crossbow string visible and grabable again
-        crossbowString.GetComponent<MeshRenderer>().enabled = true;
-        crossbowString.GetComponent<CapsuleCollider>().enabled = true;
-        crossbowString.GetComponent<CrossbowString>().loaded = false;
-
-    }
 }

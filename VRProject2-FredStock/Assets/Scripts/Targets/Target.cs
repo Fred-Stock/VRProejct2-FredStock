@@ -13,10 +13,10 @@ public class Target : MonoBehaviour
     void OnEnable()
     {
         gameManager = GameObject.Find("GameManager");
-        if(gameManager.GetComponent<GameManagement>().currentState == GameManagement.gameState.game)
-        {
-            gameManager.GetComponent<GameData>().AddTarget(gameObject);
-        }
+        //if(gameManager.GetComponent<GameManagement>().currentState == GameManagement.gameState.game)
+       // {
+        //    gameManager.GetComponent<GameData>().AddTarget(gameObject);
+       // }
 
     }
 
@@ -26,27 +26,27 @@ public class Target : MonoBehaviour
     /// If it happens during the game it adds to the player score and removes the target and bolt from the scene
     /// </summary>
     /// <param name="collision"></param>
-    private void OnCollisionEnter(Collision collision)
-    {
-        //if shot during tutorial or end game screen
-        if(gameManager.GetComponent<GameManagement>().currentState != GameManagement.gameState.game)
-        {
-            if(collision.collider.gameObject.GetComponent<Bolt>() != null)
-            {
-                gameManager.GetComponent<GameManagement>().StartGame();
-                Destroy(gameObject);
-                Destroy(collision.collider.gameObject);
-            }
-        }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    //if shot during tutorial or end game screen
+    //    if(gameManager.GetComponent<GameManagement>().currentState != GameManagement.gameState.game)
+    //    {
+    //        if(collision.collider.gameObject.GetComponent<Bolt>() != null)
+    //        {
+    //            gameManager.GetComponent<GameManagement>().StartGame();
+    //            Destroy(gameObject);
+    //            Destroy(collision.collider.gameObject);
+    //        }
+    //    }
 
-        //if shot during gameplay
-        else if(collision.collider.gameObject.GetComponent<Bolt>() != null)
-        {
-            gameManager.GetComponent<GameData>().TargetHit(gameObject);
-            Destroy(gameObject);
-            gameManager.GetComponent<GameData>().PopBolt();
-            Destroy(collision.collider.gameObject);
-        }
-    }
+    //    //if shot during gameplay
+    //    else if(collision.collider.gameObject.GetComponent<Bolt>() != null)
+    //    {
+    //        gameManager.GetComponent<GameData>().TargetHit(gameObject);
+    //        Destroy(gameObject);
+    //        gameManager.GetComponent<GameData>().PopBolt();
+    //        Destroy(collision.collider.gameObject);
+    //    }
+    //}
 
 }
