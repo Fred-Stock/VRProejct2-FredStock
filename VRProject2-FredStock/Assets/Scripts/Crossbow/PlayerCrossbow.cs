@@ -5,10 +5,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class PlayerCrossbow : Crossbow
 {
+
     public void OnEnable()
     {
         gameObject.GetComponentInChildren<XRSimpleInteractable>().selectEntered.AddListener(OnPlayerGrabEvent);
         gameObject.GetComponentInChildren<XRSimpleInteractable>().selectExited.AddListener(OnPlayerLetGoEvent);
+
     }
 
     public void OnDisable()
@@ -23,6 +25,7 @@ public class PlayerCrossbow : Crossbow
     /// <param name="arg0"></param>
     private void OnPlayerGrabEvent(SelectEnterEventArgs arg0)
     {
+
         //Makes sure that it is not possible to load multiple bolts 
         if (!loaded)
         {
@@ -42,6 +45,14 @@ public class PlayerCrossbow : Crossbow
     //Assigns the magnititude of the force that will launch the bolt
     private void OnPlayerLetGoEvent(SelectExitEventArgs arg0)
     {
+        crossbowTrigger.held = false;
+
         curBolt.GetComponent<Bolt>().shootForce = stringForce;
+    }
+
+    public override void LoadCrossbow()
+    {
+        base.LoadCrossbow();
+        curBolt.GetComponent<Bolt>().playerBolt = true;
     }
 }

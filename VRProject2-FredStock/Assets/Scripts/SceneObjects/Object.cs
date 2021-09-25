@@ -21,11 +21,14 @@ public class Object : MonoBehaviour
         if(collision.collider.GetComponent<Bolt>() != null)
         {
             //collision.collider.transform.parent = gameObject.transform;
-           
+            collision.collider.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+
             collision.collider.GetComponent<Rigidbody>().isKinematic = true;
             collision.collider.GetComponent<Collider>().enabled = false;
             //collision.collider.GetComponent<Rigidbody>().detectCollisions = false;
         }
     }
+
+
 
 }

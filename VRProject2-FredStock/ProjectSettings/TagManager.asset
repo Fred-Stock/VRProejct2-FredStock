@@ -8,17 +8,17 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bolt
+  - Rope
+  - Player
+  - CrossBow
+  - CrossBowTrigger
   - 
   - 
   - 

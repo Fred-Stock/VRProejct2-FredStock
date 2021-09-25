@@ -16,7 +16,7 @@ public class Crossbow : MonoBehaviour
     [SerializeField] protected float stringForce;
     public bool loaded = false;
 
-    public void LoadCrossbow()
+    public virtual void LoadCrossbow()
     {
         if(loaded) { return; } //make sure the crossbow is not already loaded
 
@@ -41,8 +41,11 @@ public class Crossbow : MonoBehaviour
         if (!loaded) { return; } //make sure crossbow is actually loaded before trying to fire
 
         // launches bolt and assigns parameters needed for flight 
-        curBolt.GetComponent<Rigidbody>().AddForce(curBolt.GetComponent<Bolt>().shootForce * curBolt.transform.forward, ForceMode.Force);
+        curBolt.GetComponent<Rigidbody>().isKinematic = false;
+        curBolt.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         curBolt.GetComponent<Rigidbody>().useGravity = true;
+        curBolt.GetComponent<Rigidbody>().AddForce(curBolt.GetComponent<Bolt>().shootForce * curBolt.transform.forward, ForceMode.Force);
+
         curBolt.GetComponent<Bolt>().inAir = true;
         curBolt.transform.SetParent(null);
 

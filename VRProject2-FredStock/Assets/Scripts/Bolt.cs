@@ -9,6 +9,7 @@ public class Bolt : MonoBehaviour
     [SerializeField] private float timeAlive;
     public float shootForce;
     public bool inAir;
+    public bool playerBolt;
 
     public void Update()
     {
