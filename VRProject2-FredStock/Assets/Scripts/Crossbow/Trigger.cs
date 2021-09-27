@@ -9,6 +9,7 @@ public class Trigger : MonoBehaviour
 
     public GameObject curBolt;
     public GameObject crossbow;
+    public GameObject crossbowPivot;
     private XRGrabInteractable triggerInteractable;
     private XRIDefaultInputActions controls;
     public bool held = false;
@@ -64,11 +65,13 @@ public class Trigger : MonoBehaviour
     private void OnPlayerGrabEvent(SelectEnterEventArgs arg0)
     {
         held = true;
+        //crossbowPivot.transform.SetParent(arg0.interactor.transform);
     }
 
     private void OnPlayerLetGoEvent(SelectExitEventArgs arg0)
     {
         held = false;
+        //crossbowPivot.transform.SetParent(null);
 
     }
 
