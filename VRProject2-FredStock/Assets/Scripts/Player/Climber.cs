@@ -8,15 +8,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Climber : MonoBehaviour
 {
-    private CharacterController character;
     public static XRController curHand;
-    private ContinuousMovement contiousMovement;
+
+    private CharacterController character;
+    private ContinuousMovement continousMovement;
 
     // Start is called before the first frame update
     void Start()
     {
         character = GetComponent<CharacterController>();
-        contiousMovement = GetComponent<ContinuousMovement>();
+        continousMovement = GetComponent<ContinuousMovement>();
     }
 
     void FixedUpdate()
@@ -24,11 +25,11 @@ public class Climber : MonoBehaviour
         if (curHand != null)
         {
             Climb();
-            contiousMovement.enabled = false;
+            continousMovement.enabled = false;
         }
         else
         {
-            contiousMovement.enabled = true;
+            continousMovement.enabled = true;
         }
     }
 

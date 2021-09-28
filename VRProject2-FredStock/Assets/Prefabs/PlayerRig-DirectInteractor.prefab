@@ -1251,14 +1251,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8047856253258071458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bbd37a2a0043e94685f3f84237d187a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leftTeleportRay: {fileID: 3693776216323475460}
   rightTeleportRay: {fileID: 1953644282784529077}
-  teleportActivator: 4
+  teleportActivator: 14
   activationThreshold: 0.1
 --- !u!114 &5694213626149818032
 MonoBehaviour:
