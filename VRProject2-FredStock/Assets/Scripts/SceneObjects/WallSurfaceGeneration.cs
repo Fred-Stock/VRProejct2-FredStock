@@ -50,27 +50,32 @@ public class WallSurfaceGeneration : MonoBehaviour
     {
         float curSpawnHeight = 0;// could be named better
 
-        while (curSpawnHeight < wallDimensions.y - woodBlockDimensions.y*2)
+        while (curSpawnHeight < wallDimensions.y - woodBlockDimensions.y*4)
         {
             float curSpawnSection = curSpawnHeight + 
-                Random.Range(woodBlockDimensions.y, Mathf.Min(2f, wallDimensions.y - curSpawnHeight - woodBlockDimensions.y/2));
+                Mathf.Min(Random.Range(woodBlockDimensions.y*2, 2f), wallDimensions.y - curSpawnHeight);
             
-            for(int i = 0; i < Random.Range(1,3); i++)
+            for(int i = 0; i < Random.Range(1,2); i++)
             {
-                if (towerSide == 0 || towerSide == 2)
+                if (towerSide == 1 || towerSide == 3)
                 {
                     Instantiate(woodBlockPrefab,
-                        new Vector3(0, Random.Range(curSpawnHeight, curSpawnSection), Random.Range(-wallDimensions.z / 2, wallDimensions.z / 2)),
-                        new Quaternion(0, 0, 90, 0));
+                        new Vector3(transform.position.x, 
+                        Random.Range(curSpawnHeight, curSpawnSection) + transform.position.y - wallDimensions.y / 2,
+                        Random.Range(-wallDimensions.z / 2, wallDimensions.z / 2) + transform.position.z),
+                        new Quaternion(90, 0, 0, 0)).transform.Rotate(new Vector3(0, 0, 90));
                 }
                 else
                 {
                     Instantiate(woodBlockPrefab,
-                        new Vector3(0, Random.Range(curSpawnHeight, curSpawnSection), Random.Range(-wallDimensions.z / 2, wallDimensions.z / 2)),
-                        new Quaternion(90, 0, 0, 0));
+                        new Vector3(Random.Range(-wallDimensions.x / 2, wallDimensions.x / 2) + transform.position.x,
+                        (transform.position.y - wallDimensions.y/2) + Random.Range(curSpawnHeight, curSpawnSection),
+                        transform.position.z), 
+                        new Quaternion(0, 0, 90, 0)).transform.Rotate(new Vector3(90, 0, 0));
                 }
             }
-            
+
+            curSpawnHeight = curSpawnSection;
         }
 
     }

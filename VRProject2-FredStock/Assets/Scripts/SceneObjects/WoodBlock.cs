@@ -23,6 +23,8 @@ public class WoodBlock : Object
         if(collision.gameObject.GetComponent<Bolt>() != null)
         {
             collision.collider.GetComponent<Rigidbody>().isKinematic = true;
+            collision.collider.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+
             collision.collider.GetComponent<Collider>().enabled = false;
 
             if (collision.gameObject.GetComponent<Bolt>().playerBolt)
