@@ -24,6 +24,7 @@ public class Object : MonoBehaviour
             collision.collider.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
 
             collision.collider.GetComponent<Rigidbody>().isKinematic = true;
+            //collision.collider.GetComponent<Rigidbody>().CollisionDetection = CollisionDection;
             collision.collider.GetComponent<Collider>().enabled = false;
             //collision.collider.GetComponent<Rigidbody>().detectCollisions = false;
         }
