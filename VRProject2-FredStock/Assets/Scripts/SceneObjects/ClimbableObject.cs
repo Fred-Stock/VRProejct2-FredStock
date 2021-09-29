@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,15 +9,27 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ClimbableObject : XRBaseInteractable
 {
 
+    private void Update()
+    {
+
+    }
+
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         base.OnSelectEntered(args);
 
-        if (args.interactor is XRDirectInteractor)
+        if(args.interactor is XRDirectInteractor)
         {
+            if(Climber.curHand != null)
+            {
+                if(Climber.curHand.name == args.interactor.name)
+                {
+                    return;
+                }
+            }
             Climber.curHand = args.interactor.GetComponent<XRController>();
-            //args.interactor.GetComponentInParent<XRController>();
-
+            args.interactor.GetComponent<Collider>().enabled = false;
+            Debug.Log(Climber.curHand.name);
         }
 
     }
@@ -25,12 +38,14 @@ public class ClimbableObject : XRBaseInteractable
     {
         base.OnSelectExited(args);
 
-        if (args.interactor is XRDirectInteractor)
+        if (args.interactor is XRDirectInteractor && Climber.curHand != null)
         {
-            if(Climber.curHand != null && Climber.curHand.name == args.interactor.name)
+            if ( Climber.curHand.name == args.interactor.name)
             {
+                args.interactor.GetComponent<Collider>().enabled = true;
                 Climber.curHand = null;
             }
+
         }
     }
 }

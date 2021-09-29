@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dffa04212881bc48a6f52c042d27ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodBlockPrefab: {fileID: 1498319711087687544, guid: adb703f81631b3b4fbff5145bf6d6f21, type: 3}
+  woodBlockPrefab: {fileID: 1498319711087687544, guid: 9e0c19feb9ff2fa48849bb36cffff2b7, type: 3}
   blockDensity: 0
   wallDimensions: {x: 0, y: 0, z: 0}
   woodBlockDimensions: {x: 0, y: 0, z: 0}
