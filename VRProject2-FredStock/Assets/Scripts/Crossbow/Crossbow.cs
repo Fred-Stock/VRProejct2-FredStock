@@ -29,6 +29,7 @@ public class Crossbow : MonoBehaviour
         crossbowTrigger.curBolt = curBolt;
         curBolt.GetComponent<Rigidbody>().useGravity = false;
         curBolt.transform.SetParent(crossbowBase.transform);
+        curBolt.layer = 20;
 
         loaded = true;
     }
@@ -41,6 +42,7 @@ public class Crossbow : MonoBehaviour
         if (!loaded) { return; } //make sure crossbow is actually loaded before trying to fire
 
         // launches bolt and assigns parameters needed for flight 
+        curBolt.gameObject.layer = 9;
         curBolt.GetComponent<Rigidbody>().isKinematic = false;
         curBolt.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         curBolt.GetComponent<Rigidbody>().useGravity = true;

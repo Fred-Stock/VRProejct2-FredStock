@@ -14,10 +14,11 @@ public class Climber : MonoBehaviour
 
 
     private CharacterController character;
-    private ContinuousMovement continousMovement;
+    //private ActionBasedContinuousMoveProvider continuousMovement;
+   private ContinuousMovement continousMovement;
 
 
-    public XRBaseInteractor leftHand; //should make public methods instead
+    
     //public static XRController rightHand;
 
     // Start is called before the first frame update
@@ -48,6 +49,7 @@ public class Climber : MonoBehaviour
     private void Climb()
     {
         InputDevices.GetDeviceAtXRNode(curHand.controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity);
+        //Debug.Log(velocity);
         //Vector3 velocity = Vector3.zero;
         //if (leftHandActive)
         //{
