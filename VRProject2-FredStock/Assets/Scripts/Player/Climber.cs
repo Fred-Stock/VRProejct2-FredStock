@@ -8,7 +8,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Climber : MonoBehaviour
 {
-    public static XRController curHand;
+    public static XRController curHand = null;
+    public static bool handlocked = false;
     //public static bool leftHandActive = false;
     //public static bool rightHandActive = false;
 
@@ -37,6 +38,7 @@ public class Climber : MonoBehaviour
         //if(!leftHand.CanSelect(GameObject.Find("HandHold").GetComponentInChildren<ClimbableObject>())) { Debug.Log("True"); }
         if (curHand != null) //(leftHandActive || rightHandActive)
         {
+            //curHand.GetComponent<XRDirectInteractor>().allowSelect = false;
             Climb();
             continousMovement.enabled = false;
         }
@@ -48,6 +50,21 @@ public class Climber : MonoBehaviour
 
     private void Climb()
     {
+
+        //var curHandNodes = new List<InputDevice>();
+
+        //if (curHand.gameObject.name == "LeftHand Controller")
+        //{
+        //    InputDevices.GetDeviceAtXRNode(XRNode.LeftHand).TryGetFeatureValue(CommonUsages.deviceVelocity, out velocity);
+        //}
+        //else
+        //{
+        //    InputDevices.GetDeviceAtXRNode(XRNode.RightHand).TryGetFeatureValue(CommonUsages.deviceVelocity, out velocity);
+        //}
+
+        //curHandNodes[0].TryGetFeatureValue(CommonUsages.deviceVelocity, out velocity);
+        //InputDevices.GetDeviceAtXRNode(curHand.GetComponent<XRNodeState>().TryGetVelocity
+        
         InputDevices.GetDeviceAtXRNode(curHand.controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity);
         //Debug.Log(velocity);
         //Vector3 velocity = Vector3.zero;

@@ -332,7 +332,21 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  secondGrabInteractable: {fileID: 130057448987047359}
+  interactors: []
+  leftHand:
+    serializedVersion: 2
+    m_Bits: 16384
+  rightHand:
+    serializedVersion: 2
+    m_Bits: 32768
+  bothHands:
+    serializedVersion: 2
+    m_Bits: 49152
+  lockoutLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  lockOutTimer: 0
+  lockOutInverval: 0.5
 --- !u!114 &1370657386242505667
 MonoBehaviour:
   m_ObjectHideFlags: 0
