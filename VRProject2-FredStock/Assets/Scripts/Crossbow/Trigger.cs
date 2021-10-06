@@ -12,11 +12,13 @@ public class Trigger : MonoBehaviour
     public GameObject crossbowPivot;
     private XRGrabInteractable triggerInteractable;
     private XRIDefaultInputActions controls;
+    private AudioSource audioSource;
     public bool held = false;
 
     private void Awake()
     {
         controls = new XRIDefaultInputActions();
+        audioSource = GetComponentInParent<AudioSource>();
     }
 
 
@@ -60,7 +62,16 @@ public class Trigger : MonoBehaviour
     /// calls Shoot()
     /// </summary>
     /// <param name="arg0"></param>
-    private void OnShoot(ActivateEventArgs arg0) { crossbow.GetComponent<Crossbow>().Shoot(); }
+    private void OnShoot(ActivateEventArgs arg0) {
+
+        if (crossbow.GetComponent<Crossbow>().loaded)
+        {
+            Debug.Log("Here");
+            audioSource.Play();
+        }
+        crossbow.GetComponent<Crossbow>().Shoot();
+        
+    }
 
     private void OnPlayerGrabEvent(SelectEnterEventArgs arg0)
     {

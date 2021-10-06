@@ -904,7 +904,7 @@ MonoBehaviour:
   inputSource: 4
   moveInHeadDirection: 1
   moveSpeed: 3
-  gravity: -9.81
+  gravity: -4
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
