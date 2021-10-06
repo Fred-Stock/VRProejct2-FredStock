@@ -29,6 +29,8 @@ public class WoodBlock : Object
 
             collision.collider.GetComponent<Collider>().enabled = false;
 
+            collision.collider.GetComponent<AudioSource>().Play();
+
             if (collision.gameObject.GetComponent<Bolt>().playerBolt)
             {
                 if(curRope != null) { Destroy(curRope); }

@@ -25,6 +25,7 @@ public class Object : MonoBehaviour
             collision.collider.GetComponent<Rigidbody>().isKinematic = true;
 
             collision.collider.GetComponent<Collider>().enabled = false;
+            collision.collider.GetComponent<AudioSource>().Play();
             //collision.collider.GetComponent<Rigidbody>().detectCollisions = false;
         }
     }
