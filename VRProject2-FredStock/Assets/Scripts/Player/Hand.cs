@@ -37,8 +37,6 @@ public class Hand : MonoBehaviour
     private void Climb()
     {
         InputDevices.GetDeviceAtXRNode(gameObject.GetComponent<XRController>().controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity);
-        Debug.Log("HERE");
-        //hand.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity);
         character.Move(transform.parent.rotation  * -velocity * Time.deltaTime);
     }
 
