@@ -7,6 +7,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 //created using this video https://www.youtube.com/watch?v=mHHYI7hzZ6M
 
+/// <summary>
+/// Script that goes on an object the player can climb
+/// Listens for the player grabbing and then sets that hand to be active
+/// </summary>
 public class ClimbableObject : XRBaseInteractable
 {
 

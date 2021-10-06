@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Currently Unused, spawns wood blocks on the side of a tower for the player to climb
+/// </summary>
 public class WallSurfaceGeneration : MonoBehaviour
 {
 
@@ -11,7 +14,6 @@ public class WallSurfaceGeneration : MonoBehaviour
     [SerializeField] private Vector3 wallDimensions;
     [SerializeField] private Vector3 woodBlockDimensions;
 
-    //maybe add other surfaces
 
     // Start is called before the first frame update
     void OnEnable()
@@ -46,6 +48,9 @@ public class WallSurfaceGeneration : MonoBehaviour
         SpawnBlocks();
     }
 
+    /// <summary>
+    /// spawns blocks at random points along the side of the wall
+    /// </summary>
     private void SpawnBlocks()
     {
         float curSpawnHeight = 0;// could be named better

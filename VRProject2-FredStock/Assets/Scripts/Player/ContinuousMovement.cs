@@ -44,6 +44,8 @@ public class ContinuousMovement : MonoBehaviour
 
         ColliderFollowHead();
 
+        //If moveInHeadDirection is true, then forward on the left joystick moves the player in the direction they are looking
+        //and other directions such as strafe left are determined by the rotation of the player head
         if (moveInHeadDirection)
         {
             Quaternion headYaw = Quaternion.Euler(0, playerRig.cameraGameObject.transform.eulerAngles.y, 0);
@@ -68,6 +70,10 @@ public class ContinuousMovement : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// checks if the player is touching the ground
+    /// </summary>
+    /// <returns></returns>
     public bool CheckIfGrounded()
     {
         Vector3 rayStart = transform.TransformPoint(character.center);
@@ -75,6 +81,10 @@ public class ContinuousMovement : MonoBehaviour
         return Physics.SphereCast(rayStart, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
     }
 
+    /// <summary>
+    /// Moves the player collider with the movement of the player head
+    /// ensures there is no desync between the player camera and hitbox
+    /// </summary>
     private void ColliderFollowHead()
     {
         character.height = playerRig.cameraInRigSpaceHeight + heightOffset;

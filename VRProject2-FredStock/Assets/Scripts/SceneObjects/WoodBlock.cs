@@ -19,6 +19,12 @@ public class WoodBlock : Object
         
     }
 
+    /// <summary>
+    /// If hit by a bolt it sets the bolt to stick into the target
+    /// If the bolt was shot by a player a rope is generated
+    /// If a rope already exists it is deleted and a new one is made
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.GetComponent<Bolt>() != null)

@@ -16,17 +16,19 @@ public class Object : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// If hit by a bolt the bolt is made to stick into this object
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.collider.GetComponent<Bolt>() != null)
         {
-            //collision.collider.transform.parent = gameObject.transform;
             collision.collider.GetComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             collision.collider.GetComponent<Rigidbody>().isKinematic = true;
 
             collision.collider.GetComponent<Collider>().enabled = false;
             collision.collider.GetComponent<AudioSource>().Play();
-            //collision.collider.GetComponent<Rigidbody>().detectCollisions = false;
         }
     }
 

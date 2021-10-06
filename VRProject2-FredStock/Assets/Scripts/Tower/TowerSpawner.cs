@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Script is currently unused
+/// Generates a tower randomly from pieces given as a list to this prefab
+/// </summary>
 public class TowerSpawner : MonoBehaviour
 {
+
+    
+
     public List<GameObject> towerPieces;
     public GameObject towerBase;
     public GameObject towerTop;

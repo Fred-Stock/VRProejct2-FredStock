@@ -44,6 +44,13 @@ public class Hand : MonoBehaviour
 
     public bool isClimbing() { return climbing; }
     public bool isGrabbing() { return grabbing; }
+
+    /// <summary>
+    /// Determines if the player is currently holding onto an object with either hand 
+    /// If yes then it sets the player to be climbing and disables controller movement
+    /// If no then it set the player to no be climbing and enables controller movement
+    /// </summary>
+    /// <param name="climbing"></param>
     public void setClimbing(bool climbing)
     {
         if (!climbing && !otherHand.isGrabbing())
