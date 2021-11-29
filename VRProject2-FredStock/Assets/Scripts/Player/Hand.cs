@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,17 +11,19 @@ public class Hand : MonoBehaviour
 
     private bool climbing = false;
     private bool grabbing = false;
+    private bool holdingXBow = false;
 
     private CharacterController character;
     private ContinuousMovement continousMovement;
-    private InputDevice hand;
+    private XRController hand;
 
     public Hand otherHand;
+    public GameObject CrossBow;
 
     void OnEnable()
     {
-        //hand = InputDevices.GetDeviceAtXRNode(GetComponent<XRController>().controllerNode);
-        
+        hand = GetComponent<XRController>();
+
         character = GetComponentInParent<CharacterController>();
         continousMovement = GetComponentInParent<ContinuousMovement>();
     }
@@ -31,6 +34,21 @@ public class Hand : MonoBehaviour
         if (grabbing)
         {
             Climb();
+        }
+    }
+
+    private void Update()
+    {
+        bool isPressed;
+        if(hand.inputDevice == null) { return; } //does not immediately load so this waits for it
+
+        if (hand.inputDevice.IsPressed(InputHelpers.Button.Grip, out isPressed) && isPressed)
+        {
+            HoldCrossbow();
+        }
+        else if (holdingXBow)
+        {
+            DropCrossbow();
         }
     }
 
@@ -51,6 +69,8 @@ public class Hand : MonoBehaviour
     /// <param name="climbing"></param>
     public void setClimbing(bool climbing)
     {
+        if (holdingXBow) { return; }
+
         if (!climbing && !otherHand.isGrabbing())
         {
             continousMovement.enabled = true;
@@ -66,8 +86,25 @@ public class Hand : MonoBehaviour
             grabbing = true;
             continousMovement.enabled = false;
         }
-       
         
     }
+
+    public void HoldCrossbow()
+    {
+        if (!grabbing)
+        {
+            holdingXBow = true;
+            CrossBow.SetActive(true);
+            CrossBow.transform.position = gameObject.transform.position;
+
+        }
+    }
+
+    private void DropCrossbow()
+    {
+        holdingXBow = false;
+        CrossBow.SetActive(false);
+    }
+
 
 }

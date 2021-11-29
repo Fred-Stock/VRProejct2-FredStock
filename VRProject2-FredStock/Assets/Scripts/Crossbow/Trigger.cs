@@ -10,6 +10,7 @@ public class Trigger : MonoBehaviour
     public GameObject curBolt;
     public GameObject crossbow;
     public GameObject crossbowPivot;
+    public XRController attachedHand;
     private XRGrabInteractable triggerInteractable;
     private XRIDefaultInputActions controls;
     private AudioSource audioSource;
@@ -24,8 +25,11 @@ public class Trigger : MonoBehaviour
 
     private void Update()
     {
-        
-        if((controls.XRILeftHand.Reload.triggered || controls.XRILeftHand.Reload.triggered) && held)
+
+        bool load = false;
+        attachedHand.inputDevice.IsPressed(InputHelpers.Button.PrimaryButton, out load);
+
+        if(load)
         {
             crossbow.GetComponent<Crossbow>().LoadCrossbow();
             curBolt.GetComponent<Bolt>().playerBolt = true;
@@ -66,7 +70,6 @@ public class Trigger : MonoBehaviour
 
         if (crossbow.GetComponent<Crossbow>().loaded)
         {
-            Debug.Log("Here");
             audioSource.Play();
         }
         crossbow.GetComponent<Crossbow>().Shoot();

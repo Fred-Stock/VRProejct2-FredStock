@@ -27,8 +27,6 @@ public class Climber : MonoBehaviour
         character = GetComponent<CharacterController>();
         continousMovement = GetComponent<ContinuousMovement>();
 
-
-
     }
 
     void FixedUpdate()
@@ -48,9 +46,7 @@ public class Climber : MonoBehaviour
     private void Climb()
     {
 
-        
         InputDevices.GetDeviceAtXRNode(curHand.controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity);
-
 
         character.Move(transform.rotation * -velocity * Time.fixedDeltaTime);
     }
