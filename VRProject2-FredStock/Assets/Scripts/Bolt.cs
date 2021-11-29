@@ -10,6 +10,9 @@ public class Bolt : MonoBehaviour
     public float shootForce;
     public bool inAir;
     public bool playerBolt;
+    public bool activeCable = false;
+    public GameObject playerXBow;
+    public GameObject curCable;
 
     public void Update()
     {
@@ -39,5 +42,10 @@ public class Bolt : MonoBehaviour
     public void SetShootForce(float shootForce)
     {
         this.shootForce = shootForce;
+    }
+
+    public void SetCable(GameObject cable)
+    {
+        playerXBow.GetComponent<PlayerCrossbow>().SetCable(cable);
     }
 }

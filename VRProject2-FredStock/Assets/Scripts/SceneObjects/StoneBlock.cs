@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WoodBlock : Object
+public class StoneBlock : Object
 {
-    [SerializeField] private GameObject ropePrefab;
-    private GameObject curRope;
+    [SerializeField] private GameObject cablePrefab;
+    private GameObject curCable;
 
     /// <summary>
     /// If hit by a bolt it sets the bolt to stick into the target
@@ -27,11 +27,23 @@ public class WoodBlock : Object
 
             if (collision.gameObject.GetComponent<Bolt>().playerBolt)
             {
-                if(curRope != null) { Destroy(curRope); }
+                //if(curCable != null) { Destroy(curCable); }
 
-                curRope = Instantiate(ropePrefab, collision.contacts[0].point, collision.collider.transform.rotation);
-                curRope.transform.SetParent(null);
-                curRope.GetComponent<ConfigurableJoint>().connectedAnchor = new Vector3(0,0,0);
+                Bolt playerBolt = collision.gameObject.GetComponent<Bolt>();
+
+                if (playerBolt.activeCable)
+                {
+                    playerBolt.curCable.GetComponent<Cable>().SetSecondEnd(collision.contacts[0].point);
+                    playerBolt.SetCable(null);
+                }
+                else
+                {
+                    curCable = Instantiate(cablePrefab, collision.contacts[0].point, collision.collider.transform.rotation);
+                    curCable.transform.SetParent(null);
+
+                    curCable.GetComponentInChildren<Cable>().SetFirstEnd(collision.contacts[0].point, playerBolt.playerXBow);
+                    playerBolt.SetCable(curCable);
+                }
             }
         }
     }
