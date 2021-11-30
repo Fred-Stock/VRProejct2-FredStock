@@ -41,7 +41,7 @@ public class StoneBlock : Object
                     curCable = Instantiate(cablePrefab, collision.contacts[0].point, collision.collider.transform.rotation);
                     curCable.transform.SetParent(null);
 
-                    curCable.GetComponentInChildren<Cable>().SetFirstEnd(collision.contacts[0].point, playerBolt.playerXBow);
+                    curCable.GetComponent<Cable>().SetFirstEnd(collision.contacts[0].point, playerBolt.playerXBow);
                     playerBolt.SetCable(curCable);
                 }
             }

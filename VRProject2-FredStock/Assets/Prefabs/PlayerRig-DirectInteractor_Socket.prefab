@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherHand: {fileID: 4817311474197376095}
-  CrossBow: {fileID: 788184308393093744}
+  crossBow: {fileID: 788184308393093744}
 --- !u!1 &2122877382675732504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherHand: {fileID: 3579997968216777393}
-  CrossBow: {fileID: 4941692436104019918}
+  crossBow: {fileID: 4941692436104019918}
 --- !u!1 &3545469312251006279
 GameObject:
   m_ObjectHideFlags: 0

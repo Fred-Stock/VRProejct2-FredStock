@@ -24,4 +24,11 @@ public class PlayerCrossbow : Crossbow
         activeCable = cable != null;
         curCable = cable;
     }
+
+    public void resetCable()
+    {
+        curCable = null;
+        activeCable = false;
+    }
 }
+

@@ -18,7 +18,7 @@ public class Hand : MonoBehaviour
     private XRController hand;
 
     public Hand otherHand;
-    public GameObject CrossBow;
+    public GameObject crossBow;
 
     void OnEnable()
     {
@@ -94,16 +94,17 @@ public class Hand : MonoBehaviour
         if (!grabbing)
         {
             holdingXBow = true;
-            CrossBow.SetActive(true);
-            CrossBow.transform.position = gameObject.transform.position;
+            crossBow.SetActive(true);
+            crossBow.transform.position = gameObject.transform.position;
 
         }
     }
 
     private void DropCrossbow()
     {
+        crossBow.GetComponentInChildren<PlayerCrossbow>().resetCable();
         holdingXBow = false;
-        CrossBow.SetActive(false);
+        crossBow.SetActive(false);
     }
 
 

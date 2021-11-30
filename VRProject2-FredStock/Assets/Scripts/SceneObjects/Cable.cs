@@ -30,10 +30,10 @@ public class Cable : ClimbableObject
 
 
         Vector3 direction = secondAnchor - firstAnchor;
-        float dist = direction.magnitude;
+        float dist = direction.magnitude/2;
 
         transform.LookAt(secondAnchor);
-        transform.localScale = new Vector3(transform.localScale.x, dist, transform.localScale.z);
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y , dist);
 
     }
 
@@ -43,11 +43,17 @@ public class Cable : ClimbableObject
         if(!setup && endpt1Set)
         {
 
-            Vector3 direction = activeBow.transform.position - firstAnchor;
-            float dist = direction.magnitude;
+            if (!activeBow.active)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
+            float dist = Vector3.Distance(transform.position, activeBow.transform.position)/2;       
 
             transform.LookAt(activeBow.transform.position);
-            transform.localScale = new Vector3(transform.localScale.x, dist, transform.localScale.z);
+
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, dist);
 
         }
     }
