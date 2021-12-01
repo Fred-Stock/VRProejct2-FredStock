@@ -11,6 +11,7 @@ public class Hand : MonoBehaviour
 
     private bool climbing = false;
     private bool grabbing = false;
+    private bool hoveringGrabbable = false;
     private bool holdingXBow = false;
 
     private CharacterController character;
@@ -60,6 +61,9 @@ public class Hand : MonoBehaviour
 
     public bool isClimbing() { return climbing; }
     public bool isGrabbing() { return grabbing; }
+    public bool isHovering() { return hoveringGrabbable; }
+
+    public void setHovering(bool hover) { hoveringGrabbable = hover; }
 
     /// <summary>
     /// Determines if the player is currently holding onto an object with either hand 
@@ -91,7 +95,7 @@ public class Hand : MonoBehaviour
 
     public void HoldCrossbow()
     {
-        if (!grabbing)
+        if (!grabbing && !hoveringGrabbable)
         {
             holdingXBow = true;
             crossBow.SetActive(true);

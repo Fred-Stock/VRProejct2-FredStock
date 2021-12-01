@@ -14,6 +14,27 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ClimbableObject : XRBaseInteractable
 {
 
+    protected override void OnHoverEntered(HoverEnterEventArgs args)
+    {
+        Debug.Log("HERE");
+        base.OnHoverEntered(args);
+        if (args.interactor is XRDirectInteractor)
+        {
+            args.interactor.GetComponent<Hand>().setHovering(true);
+        }
+    }
+
+    protected override void OnHoverExited(HoverExitEventArgs args)
+    {
+        Debug.Log("HERE1");
+        base.OnHoverExited(args);
+        if (args.interactor is XRDirectInteractor)
+        {
+            args.interactor.GetComponent<Hand>().setHovering(false);
+        }
+
+    }
+
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         
