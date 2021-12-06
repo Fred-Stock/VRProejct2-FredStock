@@ -128,7 +128,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2642006156731267724}
   serializedVersion: 2
-  m_Mass: 0.05
+  m_Mass: 0.01
   m_Drag: 0
   m_AngularDrag: 0.5
   m_UseGravity: 1
@@ -153,6 +153,9 @@ MonoBehaviour:
   shootForce: 0
   inAir: 0
   playerBolt: 0
+  activeCable: 0
+  playerXBow: {fileID: 0}
+  curCable: {fileID: 0}
 --- !u!65 &2323893797177982897
 BoxCollider:
   m_ObjectHideFlags: 0

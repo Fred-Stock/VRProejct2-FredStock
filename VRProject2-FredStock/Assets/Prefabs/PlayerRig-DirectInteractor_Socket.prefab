@@ -740,6 +740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherHand: {fileID: 4817311474197376095}
   crossBow: {fileID: 788184308393093744}
+  hoverMat: {fileID: 2100000, guid: efe1cc738366aa944bc6815ad9e897ce, type: 2}
+  defaultMat: {fileID: 2100000, guid: 34855f6c1bc68034d8459a679235b660, type: 2}
 --- !u!1 &2122877382675732504
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,6 +1252,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherHand: {fileID: 3579997968216777393}
   crossBow: {fileID: 4941692436104019918}
+  hoverMat: {fileID: 2100000, guid: efe1cc738366aa944bc6815ad9e897ce, type: 2}
+  defaultMat: {fileID: 2100000, guid: e8447d28355eca242ba0241b76ce4396, type: 2}
 --- !u!1 &3545469312251006279
 GameObject:
   m_ObjectHideFlags: 0

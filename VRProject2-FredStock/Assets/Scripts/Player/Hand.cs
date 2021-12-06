@@ -20,6 +20,8 @@ public class Hand : MonoBehaviour
 
     public Hand otherHand;
     public GameObject crossBow;
+    public Material hoverMat;
+    public Material defaultMat;
 
     void OnEnable()
     {
@@ -63,7 +65,17 @@ public class Hand : MonoBehaviour
     public bool isGrabbing() { return grabbing; }
     public bool isHovering() { return hoveringGrabbable; }
 
-    public void setHovering(bool hover) { hoveringGrabbable = hover; }
+    public void setHovering(bool hover) {
+        hoveringGrabbable = hover;
+        if (hover)
+        {
+            GetComponentInChildren<MeshRenderer>().material = hoverMat;
+        }
+        else
+        {
+            GetComponentInChildren<MeshRenderer>().material = defaultMat;
+        }
+    }
 
     /// <summary>
     /// Determines if the player is currently holding onto an object with either hand 
@@ -110,6 +122,5 @@ public class Hand : MonoBehaviour
         holdingXBow = false;
         crossBow.SetActive(false);
     }
-
 
 }
