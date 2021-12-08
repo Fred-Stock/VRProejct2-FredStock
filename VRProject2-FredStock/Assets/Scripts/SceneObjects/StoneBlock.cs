@@ -27,7 +27,7 @@ public class StoneBlock : Object
 
             if (collision.gameObject.GetComponent<Bolt>().playerBolt)
             {
-                //if(curCable != null) { Destroy(curCable); }
+                if(curCable != null) { Destroy(curCable); } //TODO:Check cable deletion
 
                 Bolt playerBolt = collision.gameObject.GetComponent<Bolt>();
 
