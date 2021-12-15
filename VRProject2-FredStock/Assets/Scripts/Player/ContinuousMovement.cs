@@ -40,6 +40,9 @@ public class ContinuousMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        //TODO: for gravity have to make own physics calcs
+    
         Vector3 direction;
 
         ColliderFollowHead();
@@ -60,13 +63,13 @@ public class ContinuousMovement : MonoBehaviour
         character.Move(direction * Time.fixedDeltaTime * moveSpeed);
 
         //gravity
-        fallingSpeed += gravity * Time.fixedDeltaTime;
-        if (CheckIfGrounded())
-        {
-            fallingSpeed = 0f;
-        }
+        //fallingSpeed += gravity * Time.fixedDeltaTime;
+        //if (CheckIfGrounded())
+        //{
+        //    fallingSpeed = 0f;
+        //}
 
-        character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
+        character.Move(Vector3.up * gravity * Time.fixedDeltaTime);
 
     }
 

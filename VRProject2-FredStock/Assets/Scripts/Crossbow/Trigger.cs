@@ -28,6 +28,7 @@ public class Trigger : MonoBehaviour
 
         bool load = false;
         attachedHand.inputDevice.IsPressed(InputHelpers.Button.PrimaryButton, out load);
+        if (!load) attachedHand.inputDevice.IsPressed(InputHelpers.Button.SecondaryButton, out load); //if not already told to reload check other button
 
         if(load)
         {

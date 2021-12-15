@@ -10,9 +10,10 @@ public class CheckPoint : MonoBehaviour
 
     public List<GameObject> shortCutPieces;
 
-    public void OnCollisionEnter(Collision collision)
+
+    public void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<XRRig>() != null)
+        if (other.gameObject.GetComponent<XRRig>() != null)
         {
             foreach(GameObject piece in shortCutPieces)
             {
